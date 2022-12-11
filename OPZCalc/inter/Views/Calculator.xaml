@@ -1,0 +1,87 @@
+﻿<Window x:Class="inter.Views.Calculator"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:inter.Views"
+        mc:Ignorable="d"
+        xmlns:prism="http://prismlibrary.com/" xmlns:viewmodels="clr-namespace:inter.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:CalculatorViewModel}"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="Calculator" Height="500" Width="600" Background="Plum"  >
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="Command" Value="{Binding ClickCommand}"/>
+                <Setter Property="CommandParameter" Value="{Binding Path=Content,RelativeSource={RelativeSource Self}}"/>
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Width" Value="90"/>
+                <Setter Property="Height" Value="90"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="BorderBrush" Value="Purple"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="Background" Value="#FFEC54DF"/>
+                <Setter Property="FontFamily" Value="Tempus Sans ITC"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="24"/>
+
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Result}" FontSize="24" Foreground="Purple"  HorizontalAlignment="Left" Grid.Row="0"  Width="388" />
+        <TextBox Text="{Binding Expression}" FontSize="24" Foreground="Purple" BorderBrush="Purple" Background="LightPink" HorizontalAlignment="Left" Grid.Row="1" Margin="5" Width="490" />
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="1" Grid.Column="0" Grid.Row="0"/>
+            <Button Content="2" Grid.Column="1" Grid.Row="0"/>
+            <Button Content="3" Grid.Column="2" Grid.Row="0"/>
+            <Button Content="4" Grid.Column="3" Grid.Row="0"/>
+            <Button Content="C" Command="{Binding DeleteOneCharacterCommand}" Grid.Column="4" Grid.Row="0"/>
+
+            <Button Content="=" Grid.Column="5" Grid.Row="0" Background="Purple" Command="{Binding CalculateCommand}"/>
+
+            <Button Content="5" Grid.Column="0" Grid.Row="1"/>
+            <Button Content="6" Grid.Column="1" Grid.Row="1"/>
+            <Button Content="7" Grid.Column="2" Grid.Row="1"/>
+            <Button Content="8" Grid.Column="3" Grid.Row="1"/>
+            <Button Content="AC" Command="{Binding DeleteCharacterCommand}" Grid.Column="4" Grid.Row="1"/>
+
+            <Button Content="9" Grid.Column="0" Grid.Row="2"/>
+            <Button Content="0" Grid.Column="1" Grid.Row="2"/>
+            <Button Content="," Grid.Column="2" Grid.Row="2"/>
+            <Button Content="+" Grid.Column="3" Grid.Row="2"/>
+
+
+            <Button Content="-" Grid.Column="0" Grid.Row="3"/>
+            <Button Content="*" Grid.Column="1" Grid.Row="3"/>
+            <Button Content="/" Grid.Column="2" Grid.Row="3"/>
+            <Button Content="^" Grid.Column="3" Grid.Row="3"/>
+
+
+
+        </Grid>
+
+        <TextBlock Grid.Row="2" FontSize="24" Foreground="#FFF513E2" FontWeight="Bold" FontFamily="Tempus Sans ITC" VerticalAlignment="Top" HorizontalAlignment="Left" Text="🧮" x:Name="product1" Margin="536,137,0,0" Height="28"/>
+<TextBlock Grid.Row="2" FontSize="24" Foreground="#FFF513E2" FontWeight="Bold" FontFamily="Tempus Sans ITC" VerticalAlignment="Top" HorizontalAlignment="Left" Text="💜" x:Name="product0" Margin="536,237,0,0" Height="28"/>
+        <TextBlock Grid.Row="2" FontSize="24" Foreground="#FFF513E2" FontWeight="Bold" FontFamily="Tempus Sans ITC" VerticalAlignment="Top" HorizontalAlignment="Left" Text="ⓒMaria" x:Name="product" Margin="510,335,0,0"/>
+    </Grid>
+</Window>
